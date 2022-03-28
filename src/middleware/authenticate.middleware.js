@@ -14,10 +14,10 @@ const verifyToken = (token) => {
 
 const authenticate = async (req, res, next) => {
     if(!req.headers.authorization){
-        return req.status(400).send({message: " Authentication token not found"});
+        return res.status(400).send({message: " Authentication token not found"});
     }
     if(!req.headers.authorization.startsWith("Bearer ")){
-        return req.status(400).send({message: " Authentication token not found"});
+        return res.status(400).send({message: " Authentication token not found"});
     }
     const token = req.headers.authorization.trim().split(" ")[1]
     let decoded;
