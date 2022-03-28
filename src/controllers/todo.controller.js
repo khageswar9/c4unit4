@@ -1,12 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const todo  = require("../models/todo.model");
-const authenticate = require("../middleware/authenticate.middleware");
 
 
-router.post("", authenticate, async (req, res) => {
+router.post("", async (req, res) => {
 
-    req.body.user_id = req.userID;
+    // req.body.user_id = req.userID;
     try{
         const todo = await todo.create(req.body)
         return res.status(200).send(todo);
@@ -39,3 +38,5 @@ router.delete("/:id", async (req, res) => {
     }
  
 });
+
+module.exports = router ;
